@@ -15,7 +15,7 @@ from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING
 You can run a consumer in the console with the following command
 (assuminng the defaults for the consumer group and bootstrap server)
 
-$ /kafka/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic trades-COINBASE-BTC-USD
+$ ~/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic trades-COINBASE-BTC-USD
 """
 
 
