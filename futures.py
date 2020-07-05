@@ -26,7 +26,7 @@ def main():
     f.add_feed(Coinbase(max_depth=10, channels=[TRADES, L2_BOOK], pairs=['BTC-USD'], callbacks=cbs))
     bitmex_symbols = Bitmex.get_active_symbols()
     f.add_feed(Bitmex(channels=[OPEN_INTEREST], pairs=['XBTUSD'], callbacks=cbs))
-    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks=cbs)
+    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks=cbs))
     f.add_feed(Bitmex(pairs=['XBTUSD'], channels=[FUNDING, TRADES], callbacks=cbs))
 
 
