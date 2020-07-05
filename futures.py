@@ -8,7 +8,7 @@ from cryptofeed.backends.kafka import TradeKafka, BookKafka
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import Coinbase, Bitmex
 
-from cryptofeed.defines import TRADES, L2_BOOK
+from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING
 
 
 """
@@ -21,7 +21,7 @@ $ /kafka/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic tr
 
 def main():
     f = FeedHandler()
-    cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
+    cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka()}
 
     f.add_feed(Coinbase(max_depth=10, channels=[TRADES, L2_BOOK], pairs=['BTC-USD'], callbacks=cbs))
     bitmex_symbols = Bitmex.get_active_symbols()
