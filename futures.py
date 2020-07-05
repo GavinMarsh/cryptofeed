@@ -6,7 +6,7 @@ associated with this software.
 '''
 from cryptofeed.backends.kafka import TradeKafka, BookKafka
 from cryptofeed import FeedHandler
-from cryptofeed.exchanges import Coinbase
+from cryptofeed.exchanges import Coinbase, Bitmex
 
 from cryptofeed.defines import TRADES, L2_BOOK
 
