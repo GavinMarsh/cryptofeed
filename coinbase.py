@@ -8,7 +8,7 @@ from cryptofeed.backends.kafka import TradeKafka, BookKafka, FundingKafka, BookD
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import Coinbase
 
-from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING
+from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING, COINBASE
 
 
 """
