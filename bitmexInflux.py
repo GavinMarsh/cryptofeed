@@ -18,8 +18,7 @@ def main():
     f.add_feed(Bitmex(channels=[FUNDING, L2_BOOK,], pairs=['XBTUSD'], callbacks={FUNDING: FundingInflux('http://localhost:8086', 'example'), L2_BOOK: BookInflux('http://localhost:8086', 'example', numeric_type=float), BOOK_DELTA: BookDeltaInflux('http://localhost:8086', 'example', numeric_type=float)}))
 
     bitmex_symbols = Bitmex.get_active_symbols()
-
-    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradesInflux('http://localhost:8086', 'example', numeric_type=float)}))
+    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradeInflux('http://localhost:8086', 'example', numeric_type=float)}))
 
     #cbs = {TRADES: TradesInflux(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
