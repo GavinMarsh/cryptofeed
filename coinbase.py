@@ -23,7 +23,7 @@ def main():
     f = FeedHandler()
     cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka(), TICKER: TickerKafka()}
 
-    f.add_feed(COINBASE, pairs=['BTC-USD'], channels=[TICKER], callbacks={TICKER: TickerKafka(ticker))
+    f.add_feed(COINBASE, pairs=['BTC-USD'], channels=[TICKER], callbacks={TICKER: TickerKafka(ticker)})
     f.add_feed(Coinbase(pairs=['BTC-USD'], channels=[TRADES], callbacks={TRADES: TradeKafka(trade)}))
     f.add_feed(Coinbase(config={L2_BOOK: ['BTC-USD'], TRADES: ['BTC-USD']}, callbacks={TRADES: Tradekafka(trade), L2_BOOK: Bookkafka(book)}))
 
