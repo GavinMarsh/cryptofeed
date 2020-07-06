@@ -14,7 +14,8 @@ from cryptofeed.defines import TRADES, FUNDING, L2_BOOK, BOOK_DELTA, TICKER, OPE
 def main():
 
     f = FeedHandler()
-    f.add_feed(Bitmex(channels=[FUNDING, L2_BOOK], pairs=['XBTUSD'], callbacks={FUNDING: FundingInflux('http://localhost:8086', 'example'), L2_BOOK: BookInflux('http://localhost:8086', 'example', numeric_type=float), BOOK_DELTA: BookDeltaInflux('http://localhost:8086', 'example', numeric_type=float)}))
+    f.add_feed(Bitmex(channels=[FUNDING, L2_BOOK,], pairs=['XBTUSD'], callbacks={FUNDING: FundingInflux('http://localhost:8086', 'example'), L2_BOOK: BookInflux('http://localhost:8086', 'example', numeric_type=float), BOOK_DELTA: BookDeltaInflux('http://localhost:8086', 'example', numeric_type=float)}))
+    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradeCallback('http://localhost:8086', 'example', numeric_type=float)}))
 
     #cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
