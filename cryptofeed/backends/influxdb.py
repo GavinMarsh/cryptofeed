@@ -26,7 +26,7 @@ class InfluxCallback(HTTPCallback):
         ---------------
         MEASUREMENT | TAGS | FIELDS
 
-        Measurement: Data Feed-Exxhange (configurable)
+        Measurement: Data Feed-Exchange (configurable)
         TAGS: pair
         FIELDS: timestamp, amount, price, other funding specific fields
 
