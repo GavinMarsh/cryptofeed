@@ -5,6 +5,7 @@ Please see the LICENSE file for the terms and conditions
 associated with this software.
 '''
 from cryptofeed.backends.influxdb import TradeInflux, FundingInflux, BookInflux, BookDeltaInflux, TickerInflux
+#from cryptofeed.callback import TickerCallback, TradeCallback, BookCallback, FundingCallback
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import Bitmex
 
@@ -17,9 +18,10 @@ def main():
     f.add_feed(Bitmex(channels=[FUNDING, L2_BOOK,], pairs=['XBTUSD'], callbacks={FUNDING: FundingInflux('http://localhost:8086', 'example'), L2_BOOK: BookInflux('http://localhost:8086', 'example', numeric_type=float), BOOK_DELTA: BookDeltaInflux('http://localhost:8086', 'example', numeric_type=float)}))
 
     bitmex_symbols = Bitmex.get_active_symbols()
-    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradeCallback('http://localhost:8086', 'example', numeric_type=float)}))
 
-    #cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
+    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradesInflux('http://localhost:8086', 'example', numeric_type=float)}))
+
+    #cbs = {TRADES: TradesInflux(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
     #bitmex_symbols = Bitmex.get_active_symbols()
     #f.add_feed(Bitmex(channels=[OPEN_INTEREST], pairs=['XBTUSD'], callbacks=cbs))
