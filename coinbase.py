@@ -21,7 +21,7 @@ $ ~/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topi
 
 def main():
     f = FeedHandler()
-    cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka(), TickerKafka()}
+    cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka(), TICKER: TickerKafka()}
 
     f.add_feed(COINBASE, pairs=['BTC-USD'], channels=[TICKER], callbacks={TICKER: TickerKafka(ticker))
     f.add_feed(Coinbase(pairs=['BTC-USD'], channels=[TRADES], callbacks={TRADES: TradeKafka(trade)}))
