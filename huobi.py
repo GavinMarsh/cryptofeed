@@ -11,9 +11,13 @@ def main():
     f = FeedHandler()
 
     bitmex_symbols = Bitmex.get_active_symbols()
-    f.add_feed(Bitmex(channels=[TICKER], pairs=bitmex_symbols, callbacks={TICKER: TickerKafka()}))
-    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradeKafka()}))
-#    f.add_feed(Bitmex(pairs=['XBTUSD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
+    #'BTC201225'
+    #'BTC200925'
+    config = {L2_BOOK: ['BTC_CQ', 'BTC_NQ']}
+    f.add_feed(HuobiDM(config=config, callbacks={TRADES: TradeCallback(trade), L2_BOOK: BookCallback(book)}))
+    config = {TRADES: ['BTC-USDT', 'ETH-USDT'], L2_BOOK: ['BTC-USDT']}
+    f.add_feed(Huobi(config=config, callbacks={TRADES: TradeCallback(trade), L2_BOOK: BookCallback(book)}))
+
 
 
     f.run()
