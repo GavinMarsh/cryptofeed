@@ -23,7 +23,7 @@ def main():
     okex_symbols = OKEx.get_active_symbols()
     f.add_feed(OKEx(channels=[OPEN_INTEREST], pairs=['BTC-USD'], callbacks=cbs))
     f.add_feed(OKEx(channels=[TRADES], pairs=okex_symbols, callbacks=cbs))
-    f.add_feed(OKEx(pairs=['BTCUSD'], channels=[FUNDING, TRADES], callbacks=cbs))
+    f.add_feed(OKEx(pairs=['BTC-USD'], channels=[FUNDING, TRADES], callbacks=cbs))
 
 
     f.run()
