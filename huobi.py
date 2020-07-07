@@ -3,8 +3,8 @@ Copyright (C) 2018-2020
 '''
 from cryptofeed.backends.kafka import TickerKafka, TradeKafka, BookKafka
 from cryptofeed import FeedHandler
-from cryptofeed.exchanges import Bitmex
-from cryptofeed.defines import TICKER, TRADES, L2_BOOK
+from cryptofeed.exchanges import HuobiDM
+from cryptofeed.defines import TRADES, L2_BOOK
 
 
 def main():
