@@ -6,7 +6,7 @@ associated with this software.
 '''
 from cryptofeed.backends.kafka import TradeKafka, BookKafka, FundingKafka, BookDeltaKafka, TickerKafka, OpenInterestKafka
 from cryptofeed import FeedHandler
-from cryptofeed.exchanges import OKCoin
+from cryptofeed.exchanges import OKEx
 from cryptofeed.defines import OKEX, TRADES, L2_BOOK, OPEN_INTEREST, FUNDING
 
 """
