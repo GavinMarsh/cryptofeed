@@ -1,20 +1,20 @@
 '''
 Copyright (C) 2018-2020
 '''
-from cryptofeed.backends.kafka import TickerKafka, TradeKafka, BookKafka, FundingKafka, BookDeltaKafka, OpenInterestKafka
+from cryptofeed.backends.kafka import TickerKafka, TradeKafka, BookKafka
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import Bitmex
-from cryptofeed.defines import TICKER, TRADES, L2_BOOK, OPEN_INTEREST, FUNDING
+from cryptofeed.defines import TICKER, TRADES, L2_BOOK
 
 
 def main():
     f = FeedHandler()
-    cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
     bitmex_symbols = Bitmex.get_active_symbols()
     f.add_feed(Bitmex(channels=[TICKER], pairs=bitmex_symbols, callbacks={TICKER: TickerKafka()}))
-    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks=cbs))
-#    f.add_feed(Bitmex(channels=[TRADES_FUTURES], pairs=bitmex_su, callbacks=cbs))
+    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks=TRADES: TradeKafka()))
+#    f.add_feed(Bitmex(pairs=['XBTUSD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
+
 
     f.run()
 
