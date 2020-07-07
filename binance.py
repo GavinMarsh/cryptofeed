@@ -10,7 +10,7 @@ from cryptofeed.defines import L2_BOOK_FUTURES, L2_BOOK, BID, ASK, TRADES, TRADE
 def main():
     f = FeedHandler()
 
-    f.add_feed(Binance(pairs=['BTC-USDT'], channels=[TRADES_FUTURES, TICKER_FUTURES, L2_BOOK_FUTURES], callbacks={L2_BOOK_FUTURES: BookKafka(), TRADES_FUTURES: TradeKafka(), TICKER_FUTURES: TickerKafka()}))
+    f.add_feed(BinanceFutures(pairs=['BTC-USDT'], channels=[TRADES_FUTURES, TICKER_FUTURES, L2_BOOK_FUTURES], callbacks={L2_BOOK_FUTURES: BookKafka(), TRADES_FUTURES: TradeKafka(), TICKER_FUTURES: TickerKafka()}))
  #   f.add_feed(Binance(pairs=['BTC-USDT'], channels=[TRADES, TICKER, L2_BOOK], callbacks={L2_BOOK: BookKafka(), TRADES: TradeKafka(), TICKER: TickerKafka()}))
 
 #    f.add_feed(Huobi(config=config, callbacks={TRADES: TradeKafka(), L2_BOOK: BookKafka()}))
