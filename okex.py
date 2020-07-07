@@ -16,17 +16,19 @@ You can run a consumer in the console with the following command
 $ ~/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic trades-COINBASE-BTC-USD
 """
 
+"""
+OKEx has the same api as OKCoin, just a different websocket endpoint
+"""
 def main():
     f = FeedHandler()
+
     cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
-    okex_symbols = OKEx.get_active_symbols()
-    f.add_feed(OKCoin(pairs=['BTC-USD'], channels=[L2_BOOK], callbacks=cbs))
-    f.add_feed(OKEx(pairs=okex_symbols, channels=[TRADES], callbacks=cbs))
+    okcoin_symbols = OKCoin.get_active_symbols()
+    f.add_feed(OKCoin(pairs=okcoin_symbols, channels=[TRADES, L2_BOOK, OPEN_INTEREST], callbacks=cbs))
+    f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[TRADES], callbacks={TRADES: TradeKafka()}))
 
 
-#    f.add_feed(OKEx(channels=[TRADES], pairs=okex_symbols, callbacks=cbs))
-#    f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[FUNDING, TRADES], callbacks=cbs))
 
 
     f.run()
