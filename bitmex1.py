@@ -12,7 +12,7 @@ def main():
 
     bitmex_symbols = Bitmex.get_active_symbols()
     f.add_feed(Bitmex(channels=[TICKER], pairs=bitmex_symbols, callbacks={TICKER: TickerKafka()}))
-    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks=TRADES: TradeKafka()}))
+    f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradeKafka()}))
 #    f.add_feed(Bitmex(pairs=['XBTUSD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
 
 
