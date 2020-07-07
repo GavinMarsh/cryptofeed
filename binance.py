@@ -14,7 +14,7 @@ currently unable to pull futures ticker data?
 def main():
     f = FeedHandler()
 
-    f.add_feed(BINANCE_FUTURES(pairs=['BTC-USDT'], channels=[TRADES, TICKER, L2_BOOK], callbacks={L2_BOOK: BookKafka(), TRADES: TradeKafka(), TICKER: TickerKafka()}))
+    f.add_feed(Binance_futures(pairs=['BTC-USDT'], channels=[BINANCE_FUTURES, TICKER, L2_BOOK], callbacks={L2_BOOK: BookKafka(), TRADES: TradeKafka(), TICKER: TickerKafka()}))
 #    f.add_feed(Binance(pairs=['BTC-USDT'], channels=[TRADES, TICKER, L2_BOOK], callbacks={L2_BOOK: BookKafka(), TRADES: TradeKafka(), TICKER: TickerKafka()}))
 
 
