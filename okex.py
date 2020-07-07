@@ -7,7 +7,7 @@ associated with this software.
 from cryptofeed.backends.kafka import TradeKafka, BookKafka, FundingKafka, BookDeltaKafka, TickerKafka, OpenInterestKafka
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import OKEx, OKCoin
-from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING, TICKER_FUTURES
+from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING, TRADES_FUTURES
 
 """
 You can run a consumer in the console with the following command
