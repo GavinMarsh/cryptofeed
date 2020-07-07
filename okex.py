@@ -27,7 +27,7 @@ def main():
     okex_symbols = OKEx.get_active_symbols()
 #    f.add_feed(OKEx(pairs=okex_symbols, channels=[TRADES], callbacks={TRADES: TradeKafka()}))
 
-    f.add_feed(OKCoin(pairs=['BTC-USD-0710'], channels=[TRADES_FUTURES], callbacks={TRADES_FUTURES: TradeKafka()}))
+    f.add_feed(OKCoin(pairs=okex_symbols, channels=[TRADES_FUTURES], callbacks={TRADES_FUTURES: TradeKafka()}))
     f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[TRADES], callbacks={TRADES: TradeKafka()}))
     f.add_feed(OKCoin(pairs=['BTC-USD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
 
