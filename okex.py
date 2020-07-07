@@ -23,7 +23,7 @@ def main():
     f = FeedHandler()
 
 
-    okex_symbols = OKEx.get_active_symbols_info()
+    okex_symbols = OKEx.get_active_symbols()
 #    f.add_feed(OKEx(pairs=okex_symbols, channels=[TRADES], callbacks={TRADES: TradeKafka()}))
 
     f.add_feed(OKEx(channels=[TRADES], pairs=okex_symbols, callbacks={TRADES: TradeKafka()}))
