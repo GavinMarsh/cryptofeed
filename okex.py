@@ -7,7 +7,7 @@ associated with this software.
 from cryptofeed.backends.kafka import TradeKafka, BookKafka, FundingKafka, BookDeltaKafka, TickerKafka, OpenInterestKafka
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import OKEx, OKCoin
-from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING
+from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING, TICKER_FUTURES
 
 """
 You can run a consumer in the console with the following command
@@ -24,10 +24,10 @@ def main():
 
     cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
-    okex_symbols = OKEx.get_active_symbols()
+    okex_symbols = OKEx.get_active_symbols_info()
 #    f.add_feed(OKEx(pairs=okex_symbols, channels=[TRADES], callbacks={TRADES: TradeKafka()}))
 
-    f.add_feed(OKEx(pairs=okex_symbols, channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
+    f.add_feed(OKEx(pairs=okex_symbols, channels=[TICKER_FUTURES], callbacks={TICKER_FUTURES: TickerKafka()}))
 #    f.add_feed(OKCoin(pairs=['BTC-USD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
     f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[TRADES], callbacks={TRADES: TradeKafka()}))
 
