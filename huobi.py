@@ -12,9 +12,9 @@ def main():
     #'BTC201225'
     #'BTC200925'
     config = {L2_BOOK: ['BTC_CQ', 'BTC_NQ']}
-    f.add_feed(HuobiDM(config=config, callbacks={TRADES: TradeCallback(trade), L2_BOOK: BookCallback(book)}))
+    f.add_feed(HuobiDM(config=config, callbacks={TRADES: TradeKafka(), L2_BOOK: BookKafka()}))
     config = {TRADES: ['BTC-USDT', 'ETH-USDT'], L2_BOOK: ['BTC-USDT']}
-    f.add_feed(Huobi(config=config, callbacks={TRADES: TradeCallback(trade), L2_BOOK: BookCallback(book)}))
+    f.add_feed(Huobi(config=config, callbacks={TRADES: TradeKafka(), L2_BOOK: BookKafka()}))
 
 
 
