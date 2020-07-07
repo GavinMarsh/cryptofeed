@@ -3,7 +3,7 @@ Copyright (C) 2018-2020
 '''
 from cryptofeed.backends.kafka import TickerKafka, TradeKafka, BookKafka
 from cryptofeed import FeedHandler
-from cryptofeed.exchanges import Binance
+from cryptofeed.exchanges import BinanceFutures
 from cryptofeed.defines import TICKER, TRADES, L2_BOOK
 
 
