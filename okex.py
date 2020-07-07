@@ -22,13 +22,12 @@ OKEx has the same api as OKCoin, just a different websocket endpoint
 def main():
     f = FeedHandler()
 
-    cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
     okex_symbols = OKEx.get_active_symbols_info()
 #    f.add_feed(OKEx(pairs=okex_symbols, channels=[TRADES], callbacks={TRADES: TradeKafka()}))
 
-    f.add_feed(OKEx(pairs=okex_symbols, channels=[TICKER_FUTURES], callbacks={TICKER_FUTURES: TickerKafka()}))
-#    f.add_feed(OKCoin(pairs=['BTC-USD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
+    f.add_feed(OKEx(channels=[TRADES], pairs=okex_symbols,, callbacks={TRADES: TradeKafka()}))
+    f.add_feed(OKCoin(pairs=['BTC-USD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookKafka()}))
     f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[TRADES], callbacks={TRADES: TradeKafka()}))
 
     f.run()
