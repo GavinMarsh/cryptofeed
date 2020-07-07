@@ -20,13 +20,6 @@ def main():
     bitmex_symbols = Bitmex.get_active_symbols()
     f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks={TRADES: TradeInflux('http://localhost:8086', 'example', numeric_type=float)}))
 
-    #cbs = {TRADES: TradesInflux(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
-
-    #bitmex_symbols = Bitmex.get_active_symbols()
-    #f.add_feed(Bitmex(channels=[OPEN_INTEREST], pairs=['XBTUSD'], callbacks=cbs))
-    #f.add_feed(Bitmex(channels=[TRADES], pairs=bitmex_symbols, callbacks=cbs))
-    #f.add_feed(Bitmex(pairs=['XBTUSD'], channels=[FUNDING, TRADES], callbacks=cbs))
-
     """
     # Uncomment Here When Using InfluxDB 2.0
     # For InfluxDB 2.0, provide additional org, bucket(instead of db), token and precision(optional)
