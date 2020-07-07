@@ -21,9 +21,12 @@ def main():
     cbs = {TRADES: TradeKafka(), L2_BOOK: BookKafka(), OPEN_INTEREST: OpenInterestKafka()}
 
     okex_symbols = OKEx.get_active_symbols()
-    f.add_feed(OKEx(channels=[OPEN_INTEREST], pairs=['BTC-USDT'], callbacks=cbs))
-    f.add_feed(OKEx(channels=[TRADES], pairs=okex_symbols, callbacks=cbs))
-    f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[FUNDING, TRADES], callbacks=cbs))
+    f.add_feed(OKCoin(pairs=['BTC-USD'], channels=[L2_BOOK], callbacks={L2_BOOK: BookCallback(book)}))
+    f.add_feed(OKEx(pairs=okex_symbols, channels=[TRADES], callbacks=cbs))
+
+
+#    f.add_feed(OKEx(channels=[TRADES], pairs=okex_symbols, callbacks=cbs))
+#    f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[FUNDING, TRADES], callbacks=cbs))
 
 
     f.run()
