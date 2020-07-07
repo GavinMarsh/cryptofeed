@@ -9,7 +9,7 @@ from cryptofeed.defines import L2_BOOK_FUTURES, L2_BOOK, BID, ASK, TRADES, TRADE
 def main():
     f = FeedHandler()
 
-    cbs = {TRADES_FUTURES: TradeKafka(), L2_BOOK: BookKafka(), TICKER_FUTURES: TickerKafka()}
+    cbs = {TRADES_FUTURES: TradeKafka(), L2_BOOK_FUTURES: BookKafka(), TICKER_FUTURES: TickerKafka()}
     pairs = OKEx.get_active_symbols()
     f.add_feed(OKEx(pairs=pairs, channels=[TRADES_FUTURES, L2_BOOK_FUTURES, TICKER_FUTURES], callbacks=cbs))
 #    f.add_feed(OKEx(pairs=['BTC-USDT'], channels=[TICKER], callbacks={TICKER: TickerKafka()}))
