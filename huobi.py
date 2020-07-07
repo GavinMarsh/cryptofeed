@@ -9,8 +9,6 @@ from cryptofeed.defines import TRADES, L2_BOOK
 
 def main():
     f = FeedHandler()
-
-    bitmex_symbols = Bitmex.get_active_symbols()
     #'BTC201225'
     #'BTC200925'
     config = {L2_BOOK: ['BTC_CQ', 'BTC_NQ']}
