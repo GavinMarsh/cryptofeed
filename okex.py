@@ -4,7 +4,7 @@ Copyright (C) 2018-2020
 from cryptofeed.backends.kafka import TradeKafka, BookKafka, FundingKafka, BookDeltaKafka, TickerKafka, OpenInterestKafka
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import OKEx, OKCoin
-from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING, TIKER_FUTURES, TRADES_FUTURES, TICKER
+from cryptofeed.defines import TRADES, L2_BOOK, OPEN_INTEREST, FUNDING, TICKER_FUTURES, TRADES_FUTURES, TICKER
 
 def main():
     f = FeedHandler()
