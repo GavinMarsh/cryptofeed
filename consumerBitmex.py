@@ -8,12 +8,12 @@ import json
 consumer = KafkaConsumer('trades-BITMEX-XBTUSD',bootstrap_servers = ['localhost:9092'],
 value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 for message in consumer:
-    print ("Spot price: ",message[6]['price'])
+    print ("BitMEX XBTUSD price: ",message['price'])
 
 consumer2 = KafkaConsumer('trades-BITMEX-XBTZ20',bootstrap_servers = ['localhost:9092'],
 value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 for message2 in consumer2:
-    print ("Dec Futures price: ",message2[6]['price'])
+    print ("BitMEX XBTZ20 price: ",message2['price'])
 
 
 
