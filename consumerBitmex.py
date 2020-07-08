@@ -6,7 +6,7 @@ from kafka import KafkaConsumer
 
 #consumer = KafkaConsumer('trades-BITMEX-XBTUSD')
 consumer = connect_kafka_consumer('trades-BITMEX-XBTUSD')
-for msg in consumer:
+for msg[1] in consumer:
     print (msg)
 
 if __name__ == '__main__':
