@@ -5,5 +5,5 @@ from cryptofeed.backends.kafkahandler import connect_kafka_consumer
 from kafka import KafkaConsumer
 
 consumer = KafkaConsumer('trades-BITMEX-XBTUSD')
-metrics - consumer.metrics
+metrics - consumer.metrics()
 print (metrics)
