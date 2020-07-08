@@ -3,6 +3,7 @@ Copyright (C) 2017-2020  Rez
 '''
 from cryptofeed.backends.kafkahandler import connect_kafka_consumer
 from kafka import KafkaConsumer
+import json
 
 consumer = KafkaConsumer('trades-BITMEX-XBTUSD',bootstrap_servers = ['localhost:9092'],
 value_deserializer=lambda m: json.loads(m.decode('utf-8')))
