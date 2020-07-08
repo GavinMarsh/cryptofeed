@@ -6,7 +6,7 @@ from kafka import KafkaConsumer
 
 consumer = KafkaConsumer('trades-BITMEX-XBTUSD')
 for message in consumer:
-    print (message[6])
+    print (message[6]['price'])
 
 
 
