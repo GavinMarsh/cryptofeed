@@ -13,7 +13,7 @@ from cryptofeed.backends.backend import BackendBookCallback, BackendBookDeltaCal
 
 
 class KafkaCallback:
-    def __init__(self, bootstrap='localhost', port=9092, key=None, numeric_type=float, **kwargs):
+    def __init__(self, bootstrap='127.0.0.1', port=9092, key=None, numeric_type=float, **kwargs):
         loop = asyncio.get_event_loop()
         self.producer = AIOKafkaProducer(acks=0,
                                          loop=loop,
